@@ -33,7 +33,7 @@ const state = {
   unreadNotificationsCount: 0
 };
 
-const app = document.querySelector("#app");
+const app = typeof document !== "undefined" ? document.querySelector("#app") : null;
 const icon = (name, filled = false) => `<span class="material-symbols-outlined${filled ? " icon-filled" : ""}">${name}</span>`;
 const money = (value) => `₹${Number(value || 0).toLocaleString("en-IN")}`;
 const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
@@ -67,6 +67,7 @@ async function api(path, options = {}) {
 }
 
 async function boot() {
+  if (typeof window === "undefined" || typeof document === "undefined") return;
   try {
     const me = await api("/api/auth/me");
     state.user = me.user;

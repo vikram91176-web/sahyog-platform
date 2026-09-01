@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "main": "api/index.js",
   "description": "SAHYOG worker-first cooperative digital gig services platform.",
   "scripts": {
     "dev": "node src/server.js",
