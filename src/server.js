@@ -443,6 +443,14 @@ async function serveStatic(req, res, url) {
 }
 
 async function readJson(req) {
+  if (req.body && typeof req.body === "object") return req.body;
+  if (typeof req.body === "string" && req.body.trim()) {
+    try {
+      return JSON.parse(req.body);
+    } catch {
+      return {};
+    }
+  }
   return new Promise((resolve) => {
     let raw = "";
     req.on("data", (chunk) => (raw += chunk));
