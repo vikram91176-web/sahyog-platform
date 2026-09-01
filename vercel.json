@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "buildCommand": "npx prisma generate && node scripts/build.js",
+  "outputDirectory": "public",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    }
+  ]
+}

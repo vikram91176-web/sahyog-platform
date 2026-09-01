@@ -34,25 +34,29 @@ export async function initDb() {
   const url = process.env.DATABASE_URL || DEFAULT_URL;
   const isLocalDefault = url.includes(`:${DEFAULT_PORT}/`);
 
-  if (isLocalDefault) {
-    const inUse = await isPortInUse(DEFAULT_PORT);
-    if (!inUse) {
-      if (!fs.existsSync(DATA_DIR)) {
-        fs.mkdirSync(DATA_DIR, { recursive: true });
-      }
+  if (isLocalDefault && !process.env.VERCEL) {
+    try {
+      const inUse = await isPortInUse(DEFAULT_PORT);
+      if (!inUse) {
+        if (!fs.existsSync(DATA_DIR)) {
+          fs.mkdirSync(DATA_DIR, { recursive: true });
+        }
 
-      embeddedPgInstance = new EmbeddedPostgres({
-        port: DEFAULT_PORT,
-        databaseDir: DATA_DIR,
-        user: "postgres",
-        password: "password"
-      });
+        embeddedPgInstance = new EmbeddedPostgres({
+          port: DEFAULT_PORT,
+          databaseDir: DATA_DIR,
+          user: "postgres",
+          password: "password"
+        });
 
-      const hasCluster = fs.existsSync(path.join(DATA_DIR, "PG_VERSION"));
-      if (!hasCluster) {
-        await embeddedPgInstance.initialise();
+        const hasCluster = fs.existsSync(path.join(DATA_DIR, "PG_VERSION"));
+        if (!hasCluster) {
+          await embeddedPgInstance.initialise();
+        }
+        await embeddedPgInstance.start();
       }
-      await embeddedPgInstance.start();
+    } catch (err) {
+      console.warn("Embedded PostgreSQL start skipped:", err.message);
     }
   }
 
@@ -67,7 +71,11 @@ export async function initDb() {
     });
   }
 
-  await prismaInstance.$connect();
+  try {
+    await prismaInstance.$connect();
+  } catch (err) {
+    console.warn("Prisma connect warning:", err.message);
+  }
 
   // Register cleanup hooks
   const cleanup = async () => {
