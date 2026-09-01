@@ -2,7 +2,6 @@ import fs from "node:fs";
 import net from "node:net";
 import path from "node:path";
 import { PrismaClient } from "@prisma/client";
-import { default as EmbeddedPostgres } from "embedded-postgres";
 
 const DEFAULT_PORT = 54329;
 const DEFAULT_URL = `postgresql://postgres:password@localhost:${DEFAULT_PORT}/postgres`;
@@ -34,13 +33,15 @@ export async function initDb() {
   const url = process.env.DATABASE_URL || DEFAULT_URL;
   const isLocalDefault = url.includes(`:${DEFAULT_PORT}/`);
 
-  if (isLocalDefault && !process.env.VERCEL) {
+  if (isLocalDefault && !process.env.VERCEL && !process.env.AWS_LAMBDA_FUNCTION_NAME) {
     try {
       const inUse = await isPortInUse(DEFAULT_PORT);
       if (!inUse) {
         if (!fs.existsSync(DATA_DIR)) {
           fs.mkdirSync(DATA_DIR, { recursive: true });
         }
+
+        const { default: EmbeddedPostgres } = await import("embedded-postgres");
 
         embeddedPgInstance = new EmbeddedPostgres({
           port: DEFAULT_PORT,

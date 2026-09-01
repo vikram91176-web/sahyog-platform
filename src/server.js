@@ -45,14 +45,25 @@ const secret = process.env.SESSION_SECRET || "sahyog-production-secret-key-2026"
 
 export function createServer(prisma = defaultPrisma) {
   return http.createServer(async (req, res) => {
-    try {
-      const url = new URL(req.url, `http://${req.headers.host}`);
-      if (url.pathname.startsWith("/api/")) return await handleApi(prisma, req, res, url);
-      return await serveStatic(req, res, url);
-    } catch (error) {
-      json(res, error.status || 500, { ok: false, error: error.status ? error.message : "Unexpected server error" });
-    }
+    await handleRequest(prisma, req, res);
   });
+}
+
+export async function handleRequest(prisma, req, res) {
+  try {
+    const host = req.headers["x-forwarded-host"] || req.headers.host || "localhost";
+    const proto = req.headers["x-forwarded-proto"] || "https";
+    const rawUrl = req.url || req.headers["x-forwarded-uri"] || "/";
+    const url = new URL(rawUrl, `${proto}://${host}`);
+
+    if (url.pathname.startsWith("/api/")) return await handleApi(prisma, req, res, url);
+    return await serveStatic(req, res, url);
+  } catch (error) {
+    if (!error.status || error.status >= 500) {
+      console.error("handleRequest error:", error);
+    }
+    json(res, error.status || 500, { ok: false, error: error.status ? error.message : "Unexpected server error" });
+  }
 }
 
 async function handleApi(prisma, req, res, url) {

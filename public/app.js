@@ -67,22 +67,28 @@ async function api(path, options = {}) {
 }
 
 async function boot() {
-  const me = await api("/api/auth/me");
-  state.user = me.user;
-  state.csrfToken = me.csrfToken;
-  state.home = me.home || "/";
+  try {
+    const me = await api("/api/auth/me");
+    state.user = me.user;
+    state.csrfToken = me.csrfToken;
+    state.home = me.home || "/";
 
-  if (state.user) {
-    try {
-      const [notifs, aiHistory] = await Promise.all([
-        api("/api/notifications"),
-        api("/api/ai/conversations").catch(() => ({ data: { messages: [] } }))
-      ]);
-      state.unreadNotificationsCount = notifs.data.filter((n) => !n.read).length;
-      if (aiHistory?.data?.messages?.length) {
-        state.chat = aiHistory.data.messages;
-      }
-    } catch {}
+    if (state.user) {
+      try {
+        const [notifs, aiHistory] = await Promise.all([
+          api("/api/notifications"),
+          api("/api/ai/conversations").catch(() => ({ data: { messages: [] } }))
+        ]);
+        state.unreadNotificationsCount = notifs.data.filter((n) => !n.read).length;
+        if (aiHistory?.data?.messages?.length) {
+          state.chat = aiHistory.data.messages;
+        }
+      } catch {}
+    }
+  } catch {
+    state.user = null;
+    state.csrfToken = null;
+    state.home = "/";
   }
 
   window.addEventListener("popstate", render);
