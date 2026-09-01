@@ -9,7 +9,7 @@
     "dev": "node src/server.js",
     "start": "NODE_ENV=production node src/server.js",
     "seed": "node src/seed.js",
-    "lint": "node --check src/*.js public/app.js test/*.js scripts/*.js",
+    "lint": "node --check src/*.js public/client.js test/*.js scripts/*.js",
     "typecheck": "node scripts/typecheck.js",
     "build": "prisma generate && node scripts/build.js",
     "postinstall": "prisma generate",
