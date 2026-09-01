@@ -53,10 +53,10 @@ export async function handleRequest(prisma, req, res) {
   try {
     const host = req.headers["x-forwarded-host"] || req.headers.host || "localhost";
     const proto = req.headers["x-forwarded-proto"] || "https";
-    const rawUrl = req.url || req.headers["x-forwarded-uri"] || "/";
+    const rawUrl = req.headers["x-forwarded-uri"] || req.url || "/";
     const url = new URL(rawUrl, `${proto}://${host}`);
 
-    if (url.pathname.startsWith("/api/")) return await handleApi(prisma, req, res, url);
+    if (url.pathname === "/api" || url.pathname.startsWith("/api/")) return await handleApi(prisma, req, res, url);
     return await serveStatic(req, res, url);
   } catch (error) {
     if (!error.status || error.status >= 500) {

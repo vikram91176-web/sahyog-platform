@@ -8,3 +8,5 @@ data/
 dist/
 build/
 *.log
+.vercel
+.env*

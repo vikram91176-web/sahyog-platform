@@ -3,11 +3,11 @@
   "buildCommand": "npx prisma generate && node scripts/build.js",
   "rewrites": [
     {
-      "source": "/api/(.*)",
+      "source": "/api/:path*",
       "destination": "/api"
     },
     {
-      "source": "/((?!api/|.*\\..*).*)",
+      "source": "/((?!api|.*\\..*).*)",
       "destination": "/index.html"
     }
   ]
