@@ -53,7 +53,9 @@ export async function handleRequest(prisma, req, res) {
   try {
     const host = req.headers["x-forwarded-host"] || req.headers.host || "localhost";
     const proto = req.headers["x-forwarded-proto"] || "https";
-    const rawUrl = req.headers["x-forwarded-uri"] || req.url || "/";
+    const parsedReqUrl = new URL(req.url || "/", `${proto}://${host}`);
+    const queryUrl = parsedReqUrl.searchParams.get("__url");
+    const rawUrl = queryUrl || req.headers["x-forwarded-uri"] || req.url || "/";
     const url = new URL(rawUrl, `${proto}://${host}`);
 
     if (url.pathname === "/api" || url.pathname.startsWith("/api/")) return await handleApi(prisma, req, res, url);
