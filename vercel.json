@@ -1,6 +1,11 @@
 {
   "version": 2,
-  "buildCommand": "npx prisma generate && node scripts/build.js",
+  "functions": {
+    "api/index.js": {
+      "memory": 1024,
+      "maxDuration": 15
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
