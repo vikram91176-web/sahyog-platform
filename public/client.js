@@ -1772,16 +1772,42 @@ async function loadServices() {
   const select = document.querySelector("#serviceSelect");
   if (!serviceGrid || !select) return;
 
-  serviceGrid.innerHTML = services.data.map((service) => `
-    <button class="service-select-card" data-service="${service.id}">
-      <img src="${ASSETS.services[service.name] || ASSETS.services.Plumbing}" alt="${esc(service.name)}" />
-      <strong>${esc(service.name)}</strong>
-      <small>Base from ${money(service.baseHourlyRate)}/hr</small>
-    </button>
-  `).join("");
+  const currentSelectedId = select.value || (services.data[0] ? services.data[0].id : "");
+
+  serviceGrid.innerHTML = services.data.map((service, index) => {
+    const isSelected = service.id === currentSelectedId || (!currentSelectedId && index === 0);
+    return `
+      <button type="button" class="service-select-card ${isSelected ? "active" : ""}" data-service="${service.id}">
+        <img src="${ASSETS.services[service.name] || ASSETS.services.Plumbing}" alt="${esc(service.name)}" />
+        <strong>${esc(service.name)}</strong>
+        <small>Base from ${money(service.baseHourlyRate)}/hr</small>
+      </button>
+    `;
+  }).join("");
 
   select.innerHTML = services.data.map((service) => `<option value="${service.id}">${esc(service.name)} (Base ${money(service.baseHourlyRate)}/hr)</option>`).join("");
-  select.addEventListener("change", updateWagePreview);
+  if (currentSelectedId) select.value = currentSelectedId;
+
+  serviceGrid.querySelectorAll(".service-select-card").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      e.preventDefault();
+      const serviceId = card.dataset.service;
+      if (select) select.value = serviceId;
+      serviceGrid.querySelectorAll(".service-select-card").forEach((c) => c.classList.remove("active"));
+      card.classList.add("active");
+      updateWagePreview();
+    });
+  });
+
+  select.addEventListener("change", () => {
+    const val = select.value;
+    serviceGrid.querySelectorAll(".service-select-card").forEach((c) => {
+      if (c.dataset.service === val) c.classList.add("active");
+      else c.classList.remove("active");
+    });
+    updateWagePreview();
+  });
+
   document.querySelector("input[name=estimatedDurationHours]")?.addEventListener("input", updateWagePreview);
   await updateWagePreview();
 }

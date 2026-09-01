@@ -130,10 +130,7 @@ async function handleApi(prisma, req, res, url) {
     return json(res, 200, result);
   }
 
-  if (!auth.user) throw statusError(401, "Authentication required");
-  const user = auth.user;
-
-  // 2. Services & Wage Estimation
+  // Public Service Categories & Wage Estimation
   if (req.method === "GET" && url.pathname === "/api/services") {
     const categories = await prisma.serviceCategory.findMany({ orderBy: { name: "asc" } });
     return json(res, 200, { ok: true, data: categories });
@@ -143,6 +140,9 @@ async function handleApi(prisma, req, res, url) {
     const estimate = await estimateWage(prisma, body);
     return json(res, 200, { ok: true, data: estimate });
   }
+
+  if (!auth.user) throw statusError(401, "Authentication required");
+  const user = auth.user;
 
   // 3. Workers Directory, Profile, & Verification
   if (req.method === "GET" && url.pathname === "/api/workers") {
