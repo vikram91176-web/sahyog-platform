@@ -43,6 +43,14 @@ const publicDir = path.resolve(__dirname, "../public");
 const stitchDir = path.resolve(__dirname, "../stitch_sahyog_worker_first_cooperative_marketplace");
 const secret = process.env.SESSION_SECRET || "sahyog-production-secret-key-2026";
 
+export default async function handler(req, res) {
+  const db = await initDb().catch((err) => {
+    console.warn("Database init warning on Vercel:", err.message);
+    return null;
+  });
+  await handleRequest(db, req, res);
+}
+
 export function createServer(prisma = defaultPrisma) {
   return http.createServer(async (req, res) => {
     await handleRequest(prisma, req, res);
