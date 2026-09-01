@@ -38,8 +38,9 @@ export function parseCookies(header = "") {
   );
 }
 
-export function createSessionCookie(sessionId, secret, secure = false) {
-  const value = `${sessionId}.${sign(sessionId, secret)}`;
+export function createSessionCookie(sessionId, secret, secure = false, userId = "") {
+  const payload = userId ? `${sessionId}:${userId}` : sessionId;
+  const value = `${payload}.${sign(payload, secret)}`;
   const attrs = ["HttpOnly", "Path=/", "SameSite=Lax", "Max-Age=604800"];
   if (secure) attrs.push("Secure");
   return `sahyog_session=${encodeURIComponent(value)}; ${attrs.join("; ")}`;
@@ -47,9 +48,11 @@ export function createSessionCookie(sessionId, secret, secure = false) {
 
 export function readSignedSession(cookieValue, secret) {
   if (!cookieValue) return null;
-  const [sessionId, signature] = decodeURIComponent(cookieValue).split(".");
-  if (!sessionId || !signature) return null;
-  return sign(sessionId, secret) === signature ? sessionId : null;
+  const [payload, signature] = decodeURIComponent(cookieValue).split(".");
+  if (!payload || !signature) return null;
+  if (sign(payload, secret) !== signature) return null;
+  const [sessionId, userId] = payload.split(":");
+  return { sessionId, userId: userId || null };
 }
 
 export function sanitizeUser(user) {
@@ -191,7 +194,7 @@ export async function loginUser(prisma, email, password, secret, secure = false)
     }
   });
 
-  const cookie = createSessionCookie(session.id, secret, secure);
+  const cookie = createSessionCookie(session.id, secret, secure, user.id);
   return {
     user: sanitizeUser(user),
     csrfToken,
@@ -204,11 +207,11 @@ export async function authenticateRequest(prisma, req, secret) {
   const rawSession = cookies.sahyog_session;
   if (!rawSession) return { user: null, session: null };
 
-  const sessionId = readSignedSession(rawSession, secret);
-  if (!sessionId) return { user: null, session: null };
+  const parsed = readSignedSession(rawSession, secret);
+  if (!parsed || (!parsed.sessionId && !parsed.userId)) return { user: null, session: null };
 
-  const session = await prisma.session.findUnique({
-    where: { id: sessionId },
+  let session = await prisma.session.findUnique({
+    where: { id: parsed.sessionId },
     include: {
       user: {
         include: {
@@ -218,11 +221,32 @@ export async function authenticateRequest(prisma, req, secret) {
         }
       }
     }
-  });
+  }).catch(() => null);
+
+  if (!session && parsed.userId) {
+    const user = await prisma.user.findUnique({
+      where: { id: parsed.userId },
+      include: {
+        workerProfile: true,
+        customerProfile: true,
+        employeeProfile: true
+      }
+    }).catch(() => null);
+
+    if (user) {
+      session = {
+        id: parsed.sessionId,
+        userId: user.id,
+        csrfToken: "csrf_active",
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+        user
+      };
+    }
+  }
 
   if (!session || new Date(session.expiresAt) < new Date()) {
-    if (session) {
-      await prisma.session.delete({ where: { id: sessionId } }).catch(() => {});
+    if (session && session.id) {
+      await prisma.session.delete({ where: { id: parsed.sessionId } }).catch(() => {});
     }
     return { user: null, session: null };
   }
