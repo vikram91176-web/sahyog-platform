@@ -1,0 +1,27 @@
+{
+  "name": "sahyog-worker-first-marketplace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "SAHYOG worker-first cooperative digital gig services platform.",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "NODE_ENV=production node src/server.js",
+    "seed": "node src/seed.js",
+    "lint": "node --check src/*.js public/app.js test/*.js scripts/*.js",
+    "typecheck": "node scripts/typecheck.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "prisma": "^6.19.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "embedded-postgres": "^18.4.0-beta.17",
+    "pg": "^8.23.0"
+  }
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Worker Onboarding - SAHYOG</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#316e52",
+                    "tertiary-container": "#552b00",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#1a365d",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "on-surface": "#141b2b",
+                    "secondary": "#2c694e",
+                    "surface-container-high": "#e1e8fd",
+                    "on-surface-variant": "#43474e",
+                    "on-tertiary-fixed": "#2f1500",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e9edff",
+                    "on-secondary-fixed": "#002114",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#dce2f7",
+                    "inverse-surface": "#293040",
+                    "outline": "#74777f",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#b1f0ce",
+                    "primary": "#002045",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#d3daef",
+                    "surface": "#f9f9ff",
+                    "on-primary-container": "#86a0cd",
+                    "tertiary": "#361900",
+                    "surface-variant": "#dce2f7",
+                    "background": "#f9f9ff",
+                    "secondary-container": "#aeeecb",
+                    "inverse-on-surface": "#edf0ff",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "inverse-primary": "#adc7f7",
+                    "on-primary-fixed": "#001b3c",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "surface-container-low": "#f1f3ff",
+                    "primary-fixed": "#d6e3ff",
+                    "tertiary-fixed": "#ffdcc3",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "primary-fixed-dim": "#adc7f7",
+                    "surface-tint": "#455f88",
+                    "on-background": "#141b2b",
+                    "surface-bright": "#f9f9ff",
+                    "on-tertiary-container": "#eb851c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "16px",
+                    "gutter": "16px",
+                    "base": "8px",
+                    "container-padding-desktop": "32px",
+                    "touch-target-min": "48px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .step-container { display: none; }
+        .step-container.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased">
+<!-- Top Navigation (Contextual: Only brand and back, no tabs for onboarding) -->
+<header class="bg-surface dark:bg-surface-dim flex justify-between items-center w-full px-container-padding-mobile md:px-container-padding-desktop h-touch-target-min border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-4">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors" onclick="prevStep()">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz67lpDckmLGDsBxyqjiszBbHAwqR2ip4oJCAYoQn69_hXSyGy4jDBG654Gy-n84H-ek6k9Ps4IEJNGGjen_SNXeL0x38l1Kde5zYvRlXpX-wUpCnXF9luVGzzUAkABII5b_QTXXz6zDNOmR_jhNjwQICPNKjzuB4xb5fvDGwWOHgk-EVDADAQM30YUg4dSUFeaFTTQpYVVQF37sm_nFp-ySJxwjqJvefUOttjhERTVurS6gJX8uKs" alt="SAHYOG Brand Logo" class="h-8 w-auto object-contain">
+</div>
+<div class="text-label-md font-label-md text-on-surface-variant">
+            Help
+        </div>
+</header>
+<main class="flex-grow flex flex-col items-center py-8 px-container-padding-mobile w-full max-w-2xl mx-auto">
+<!-- Progress Indicator -->
+<div class="w-full mb-8">
+<div class="flex justify-between items-center mb-2">
+<span class="text-label-md font-label-md text-primary" id="step-label">Step 1 of 3</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Personal Info</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-300 ease-in-out w-1/3" id="progress-bar"></div>
+</div>
+</div>
+<!-- Step 1: Personal Info -->
+<div class="step-container active w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-6 md:p-8" id="step-1">
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg mb-6 text-on-surface">Let's get to know you</h2>
+<form class="space-y-6">
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2">Full Name</label>
+<input class="w-full h-touch-target-min px-4 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface outline-none" placeholder="Enter your full name" type="text">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2">Date of Birth</label>
+<input class="w-full h-touch-target-min px-4 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface outline-none" type="date">
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2">Gender</label>
+<select class="w-full h-touch-target-min px-4 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface outline-none appearance-none">
+<option value="">Select Gender</option>
+<option value="male">Male</option>
+<option value="female">Female</option>
+<option value="other">Other</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2">Preferred Language</label>
+<select class="w-full h-touch-target-min px-4 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface outline-none appearance-none">
+<option value="en">English</option>
+<option value="hi">Hindi</option>
+<option value="te">Telugu</option>
+<option value="ta">Tamil</option>
+</select>
+</div>
+</form>
+</div>
+<!-- Step 2: Location -->
+<div class="step-container w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-6 md:p-8" id="step-2">
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg mb-6 text-on-surface">Where will you work?</h2>
+<form class="space-y-6">
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2">Current Locality / Pin Code</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">location_on</span>
+<input class="w-full h-touch-target-min pl-10 pr-4 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface outline-none" placeholder="e.g. 110001 or Connaught Place" type="text">
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-4">Preferred Work Radius</label>
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-3 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary-container has-[:checked]:border-primary-container">
+<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="radius" type="radio">
+<div class="flex flex-col">
+<span class="text-label-md font-label-md">Within 5 km</span>
+<span class="text-label-sm font-label-sm opacity-80">Local neighborhood jobs</span>
+</div>
+</label>
+<label class="flex items-center gap-3 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary-container has-[:checked]:border-primary-container">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="radius" type="radio">
+<div class="flex flex-col">
+<span class="text-label-md font-label-md">5 - 15 km</span>
+<span class="text-label-sm font-label-sm opacity-80">City-wide opportunities</span>
+</div>
+</label>
+</div>
+</div>
+</form>
+</div>
+<!-- Step 3: Skills -->
+<div class="step-container w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-6 md:p-8" id="step-3">
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg mb-6 text-on-surface">Your Skills &amp; Experience</h2>
+<form class="space-y-6">
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-4">Select Categories (Multiple)</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center gap-2 p-3 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary-container has-[:checked]:border-primary-container">
+<input class="w-5 h-5 text-primary rounded focus:ring-primary border-outline-variant" type="checkbox">
+<span class="material-symbols-outlined text-lg">plumbing</span>
+<span class="text-label-sm font-label-sm">Plumbing</span>
+</label>
+<label class="flex items-center gap-2 p-3 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary-container has-[:checked]:border-primary-container">
+<input class="w-5 h-5 text-primary rounded focus:ring-primary border-outline-variant" type="checkbox">
+<span class="material-symbols-outlined text-lg">electric_bolt</span>
+<span class="text-label-sm font-label-sm">Electrical</span>
+</label>
+<label class="flex items-center gap-2 p-3 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary-container has-[:checked]:border-primary-container">
+<input class="w-5 h-5 text-primary rounded focus:ring-primary border-outline-variant" type="checkbox">
+<span class="material-symbols-outlined text-lg">carpenter</span>
+<span class="text-label-sm font-label-sm">Carpentry</span>
+</label>
+<label class="flex items-center gap-2 p-3 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary-container has-[:checked]:border-primary-container">
+<input class="w-5 h-5 text-primary rounded focus:ring-primary border-outline-variant" type="checkbox">
+<span class="material-symbols-outlined text-lg">local_shipping</span>
+<span class="text-label-sm font-label-sm">Delivery</span>
+</label>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2">Years of Experience</label>
+<select class="w-full h-touch-target-min px-4 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface outline-none appearance-none">
+<option value="">Select Experience</option>
+<option value="0-1">0 - 1 Years</option>
+<option value="1-3">1 - 3 Years</option>
+<option value="3-5">3 - 5 Years</option>
+<option value="5+">5+ Years</option>
+</select>
+</div>
+</form>
+</div>
+<!-- Action Area -->
+<div class="w-full mt-8 flex justify-end">
+<button class="w-full md:w-auto h-touch-target-min px-8 bg-primary text-on-primary text-label-md font-label-md rounded-lg flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors shadow-md" id="next-btn" onclick="nextStep()">
+<span class="">Next Step</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</main>
+<script>
+        let currentStep = 1;
+        const totalSteps = 3;
+        const stepNames = ["Personal Info", "Location Selection", "Skills & Experience"];
+
+        function updateUI() {
+            // Hide all steps
+            document.querySelectorAll('.step-container').forEach(el => el.classList.remove('active'));
+            // Show current step
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            
+            // Update Progress Bar
+            const progressPercentage = (currentStep / totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercentage}%`;
+            
+            // Update Label
+            document.getElementById('step-label').textContent = `Step ${currentStep} of ${totalSteps}`;
+            document.getElementById('step-label').nextElementSibling.textContent = stepNames[currentStep-1];
+
+            // Update Button Text
+            const nextBtn = document.getElementById('next-btn');
+            if (currentStep === totalSteps) {
+                nextBtn.innerHTML = `<span>Complete Registration</span><span class="material-symbols-outlined">check_circle</span>`;
+                nextBtn.classList.remove('bg-primary');
+                nextBtn.classList.add('bg-secondary', 'text-on-secondary');
+            } else {
+                nextBtn.innerHTML = `<span>Next Step</span><span class="material-symbols-outlined">arrow_forward</span>`;
+                nextBtn.classList.add('bg-primary');
+                nextBtn.classList.remove('bg-secondary', 'text-on-secondary');
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateUI();
+            } else {
+                alert("Registration Complete!");
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateUI();
+            } else {
+                console.log("Back to landing page");
+            }
+        }
+    </script>
+
+
+
+
+<button aria-label="Sahyog Assistant" class="fixed bottom-6 right-6 w-14 h-14 bg-primary-container text-on-primary-container rounded-full shadow-md flex items-center justify-center hover:bg-primary-container/90 transition-all active:scale-95 z-50" id="chatbot-fab"><span class="material-symbols-outlined text-3xl">support_agent</span></button></body></html>

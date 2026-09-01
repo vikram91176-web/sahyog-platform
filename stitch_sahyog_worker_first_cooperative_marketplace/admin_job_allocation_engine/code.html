@@ -1,0 +1,399 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Intelligent Job Pool &amp; Allocation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#316e52",
+                      "tertiary-container": "#552b00",
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#1a365d",
+                      "secondary-fixed-dim": "#95d4b3",
+                      "on-surface": "#141b2b",
+                      "secondary": "#2c694e",
+                      "surface-container-high": "#e1e8fd",
+                      "on-surface-variant": "#43474e",
+                      "on-tertiary-fixed": "#2f1500",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#c4c6cf",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#e9edff",
+                      "on-secondary-fixed": "#002114",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#dce2f7",
+                      "inverse-surface": "#293040",
+                      "outline": "#74777f",
+                      "on-tertiary-fixed-variant": "#6e3900",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#b1f0ce",
+                      "primary": "#002045",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#d3daef",
+                      "surface": "#f9f9ff",
+                      "on-primary-container": "#86a0cd",
+                      "tertiary": "#361900",
+                      "surface-variant": "#dce2f7",
+                      "background": "#f9f9ff",
+                      "secondary-container": "#aeeecb",
+                      "inverse-on-surface": "#edf0ff",
+                      "on-secondary-fixed-variant": "#0e5138",
+                      "inverse-primary": "#adc7f7",
+                      "on-primary-fixed": "#001b3c",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "surface-container-low": "#f1f3ff",
+                      "primary-fixed": "#d6e3ff",
+                      "tertiary-fixed": "#ffdcc3",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "primary-fixed-dim": "#adc7f7",
+                      "surface-tint": "#455f88",
+                      "on-background": "#141b2b",
+                      "surface-bright": "#f9f9ff",
+                      "on-tertiary-container": "#eb851c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding-mobile": "16px",
+                      "gutter": "16px",
+                      "base": "8px",
+                      "container-padding-desktop": "32px",
+                      "touch-target-min": "48px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen overflow-hidden flex font-body-md">
+<!-- SideNavBar -->
+<nav class="hidden lg:flex flex-col h-screen fixed left-0 top-0 z-40 bg-primary dark:bg-on-primary-fixed shadow-lg w-64 text-on-primary dark:text-primary-fixed">
+<div class="p-6 border-b border-primary-container/20">
+<div class="flex items-center justify-center mb-4">
+  <img class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz67lpDckmLGDsBxyqjiszBbHAwqR2ip4oJCAYoQn69_hXSyGy4jDBG654Gy-n84H-ek6k9Ps4IEJNGGjen_SNXeL0x38l1Kde5zYvRlXpX-wUpCnXF9luVGzzUAkABII5b_QTXXz6zDNOmR_jhNjwQICPNKjzuB4xb5fvDGwWOHgk-EVDADAQM30YUg4dSUFeaFTTQpYVVQF37sm_nFp-ySJxwjqJvefUOttjhERTVurS6gJX8uKs" alt="SAHYOG Brand Logo">
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-4">
+<ul class="space-y-1">
+<li class="">
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-label-md font-label-md">Workers</span>
+</a>
+</li>
+<li class="">
+<a class="bg-primary-container text-on-primary-container rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 translate-x-1 transition-transform shadow-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">engineering</span>
+<span class="text-label-md font-label-md">Jobs</span>
+</a>
+</li>
+<li class="">
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+</li>
+<li class="">
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="p-4 border-t border-primary-container/20">
+<button class="w-full bg-error text-on-error hover:bg-error/90 h-touch-target-min rounded-DEFAULT text-label-md font-label-md flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined">emergency</span>
+                SOS Monitor
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 h-screen flex flex-col bg-surface">
+<!-- TopAppBar (Mobile/Tablet) -->
+<header class="lg:hidden flex justify-between items-center w-full px-container-padding-mobile h-touch-target-min bg-surface text-primary border-b border-outline-variant">
+<img class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz67lpDckmLGDsBxyqjiszBbHAwqR2ip4oJCAYoQn69_hXSyGy4jDBG654Gy-n84H-ek6k9Ps4IEJNGGjen_SNXeL0x38l1Kde5zYvRlXpX-wUpCnXF9luVGzzUAkABII5b_QTXXz6zDNOmR_jhNjwQICPNKjzuB4xb5fvDGwWOHgk-EVDADAQM30YUg4dSUFeaFTTQpYVVQF37sm_nFp-ySJxwjqJvefUOttjhERTVurS6gJX8uKs" alt="SAHYOG Brand Logo">
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">location_on</span>
+</button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="flex-1 p-container-padding-mobile md:p-container-padding-desktop overflow-hidden flex flex-col lg:flex-row gap-gutter">
+<!-- Left Column: Pending Jobs -->
+<div class="w-full lg:w-1/3 flex flex-col bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden h-[40vh] lg:h-full shrink-0">
+<div class="p-4 border-b border-outline-variant bg-surface-container-lowest z-10 flex justify-between items-center">
+<h2 class="text-headline-md font-headline-md text-on-surface">Pending Jobs</h2>
+<span class="bg-error-container text-on-error-container text-label-sm font-label-sm px-2 py-1 rounded-full">12 New</span>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4 hide-scrollbar">
+<!-- Selected Job Card -->
+<div class="bg-surface border-2 border-primary rounded-lg p-4 cursor-pointer shadow-[0_4px_12px_rgba(26,54,93,0.05)] transition-all">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-label-md font-label-md text-on-surface">Plumbing Repair</h3>
+<span class="text-secondary font-label-md">₹850</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Noida Sector 62
+                        </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-primary-fixed text-on-primary-fixed-variant text-label-sm font-label-sm px-2 py-1 rounded-DEFAULT">Urgent</span>
+<span class="bg-surface-variant text-on-surface-variant text-label-sm font-label-sm px-2 py-1 rounded-DEFAULT">Indoor</span>
+</div>
+</div>
+<!-- Unselected Job Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 cursor-pointer hover:bg-surface-container-low transition-all">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-label-md font-label-md text-on-surface">Electrical Wiring</h3>
+<span class="text-secondary font-label-md">₹1200</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Gurugram Phase 3
+                        </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-variant text-on-surface-variant text-label-sm font-label-sm px-2 py-1 rounded-DEFAULT">Scheduled</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 cursor-pointer hover:bg-surface-container-low transition-all">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-label-md font-label-md text-on-surface">Carpentry Fix</h3>
+<span class="text-secondary font-label-md">₹500</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Delhi, South Ext.
+                        </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-variant text-on-surface-variant text-label-sm font-label-sm px-2 py-1 rounded-DEFAULT">Standard</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Details & Allocation -->
+<div class="w-full lg:w-2/3 flex flex-col gap-gutter h-full overflow-hidden">
+<!-- Top Detail Header -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-6 shrink-0">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-1">Plumbing Repair</h2>
+<p class="text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined">pin_drop</span>
+                                Noida Sector 62 • Scheduled for Today, 14:00
+                            </p>
+</div>
+<div class="text-right">
+<div class="text-headline-md font-headline-md text-secondary">₹850</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Estimated Payout</div>
+</div>
+</div>
+</div>
+<!-- Lower Split: Map and Recommendations -->
+<div class="flex flex-col md:flex-row gap-gutter flex-1 overflow-hidden">
+<!-- Recommendations List -->
+<div class="w-full md:w-1/2 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant bg-surface-container-lowest z-10 flex justify-between items-center">
+<h3 class="text-label-md font-label-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+                                AI Allocation
+                            </h3>
+<span class="bg-secondary-container text-on-secondary-container text-label-sm font-label-sm px-2 py-1 rounded-full">Fairness Optimized</span>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4 hide-scrollbar">
+<!-- Worker Candidate 1 -->
+<div class="bg-surface border border-primary/30 rounded-lg p-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-secondary/10 to-transparent rounded-bl-full"></div>
+<div class="flex gap-4 items-start mb-3">
+<img class="w-12 h-12 rounded-full object-cover border-2 border-surface-container-lowest" data-alt="Profile photo of an Indian manual worker in his 30s. Professional, clean, light mode aesthetic, well-lit, corporate saas application context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzICUbVNkV2VMefAjGAg3tQnjyeQh7GcOte3nGc7fTWaEUev2-Ex1_rEu-7BzBK2jFW-oXyT0w_coA4YA1u5igUOkHxdYezuYHXkZySggy612N4T_vIc3YsFoNX7qxph8TTm-iYl8rYAk7XrIExIYy04a_y05dpqMblBMT4Uti3EO8jWVyKwff7urBBpMtX6-W2Bt9Q2cCATvpxS2oebnfBUHyijRXXozZLTvNIWA3GNN3ej0E0ZVC">
+<div class="flex-1">
+<div class="flex justify-between">
+<h4 class="text-label-md font-label-md text-on-surface">Ramesh Kumar</h4>
+<span class="text-secondary font-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                                                98% Match
+                                            </span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Master Plumber • 4.8 Rating</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-4">
+<div class="bg-surface-container-low p-2 rounded-DEFAULT text-center">
+<div class="text-label-sm font-label-sm text-on-surface-variant">Distance</div>
+<div class="text-body-md font-label-md text-on-surface">1.2 km</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded-DEFAULT text-center">
+<div class="text-label-sm font-label-sm text-on-surface-variant">Status</div>
+<div class="text-body-md font-label-md text-secondary">Available</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded-DEFAULT text-center">
+<div class="text-label-sm font-label-sm text-on-surface-variant">Fairness</div>
+<div class="text-body-md font-label-md text-on-tertiary-container">High Priority</div>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary h-touch-target-min rounded-DEFAULT text-label-md font-label-md hover:bg-primary/90 transition-colors">
+                                    Assign Worker
+                                </button>
+</div>
+<!-- Worker Candidate 2 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-4">
+<div class="flex gap-4 items-start mb-3">
+<img class="w-12 h-12 rounded-full object-cover border border-outline-variant" data-alt="Profile photo of an Indian male plumber in his 40s. Professional, clean, light mode aesthetic, well-lit, corporate saas application context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRPAtLni1VFiWEktkuDvYSTlS77dgGNkoY_v0Vpw_E_glXt7VRg7Cj-DJV-Zmu9H8F5w47R53tGtEZxfg30MKfet_Qt8ddIIR-Knf8keCvX0mHhCC2BGSdaf94JZ3c5Dkh0Cqxu1Z5oKvBQQPlrZtpA3KcoTDftMKqRZNEGwRSC10JajyhMbpppzBOtBFPJmWxIIMisP_ThVcU56Z-0A6fs7yckseLS_s6j-rR_p_DXY7IUc8clRhj">
+<div class="flex-1">
+<div class="flex justify-between">
+<h4 class="text-label-md font-label-md text-on-surface">Suresh Singh</h4>
+<span class="text-primary font-label-md">85% Match</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Plumber • 4.5 Rating</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-4">
+<div class="bg-surface-container-low p-2 rounded-DEFAULT text-center">
+<div class="text-label-sm font-label-sm text-on-surface-variant">Distance</div>
+<div class="text-body-md font-label-md text-on-surface">3.5 km</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded-DEFAULT text-center">
+<div class="text-label-sm font-label-sm text-on-surface-variant">Status</div>
+<div class="text-body-md font-label-md text-secondary">Available</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded-DEFAULT text-center">
+<div class="text-label-sm font-label-sm text-on-surface-variant">Fairness</div>
+<div class="text-body-md font-label-md text-on-surface">Standard</div>
+</div>
+</div>
+<button class="w-full border border-primary text-primary h-touch-target-min rounded-DEFAULT text-label-md font-label-md hover:bg-primary-container hover:text-on-primary-container transition-colors">
+                                    Assign Worker
+                                </button>
+</div>
+</div>
+</div>
+<!-- Map View -->
+<div class="w-full md:w-1/2 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden relative min-h-[300px]">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A clean, minimalist map interface showing a city area. Grayscale base with vibrant blue and green markers for job location and worker positions. Professional SaaS dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgWVddPQsXpb43XB0H3lHWzAk3m12dYq2khcBRyud2GdoULpHCUNQUHueWmUcOGiaYneT2JXmlFFRFNqOe_V2PWsNS6KLX6L1kbtdO--kzN-kcSnUaZQJKr1I534eaOjbt9i3aUTKgL7eFAT80bsQy-QFA-vqD80-7DHTPEAR-cmZqE0hEoM18woEVaAmi44OdvFZZX4uKAN_c-ix2uPWWg3UfIGrAQQfte0X9s97o3M-R0KEgjCbu">
+<!-- Map Overlay Controls -->
+<div class="absolute top-4 right-4 bg-surface rounded-lg shadow-md border border-outline-variant flex flex-col overflow-hidden">
+<button class="p-2 hover:bg-surface-container text-on-surface-variant transition-colors border-b border-outline-variant">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="p-2 hover:bg-surface-container text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+</div>
+<!-- Legend -->
+<div class="absolute bottom-4 left-4 right-4 bg-surface/90 backdrop-blur-sm p-3 rounded-lg border border-outline-variant shadow-sm flex justify-around">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<span class="text-label-sm font-label-sm text-on-surface">Job Site</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="text-label-sm font-label-sm text-on-surface">Best Match</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary/50"></div>
+<span class="text-label-sm font-label-sm text-on-surface">Available</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface shadow-[0_-4px_12px_rgba(26,54,93,0.05)] rounded-t-xl border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">work</span>
+<span class="text-label-sm font-label-sm">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-label-sm font-label-sm">Earnings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="text-label-sm font-label-sm">Welfare</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</a>
+</nav>
+</main>
+
+
+
+
+<button class="fixed bottom-4 right-4 z-50 w-16 h-16 bg-primary-container text-on-primary-container rounded-full shadow-lg flex items-center justify-center hover:bg-primary-container/20 transition-all cursor-pointer" aria-label="Sahyog Assistant">
+  <span class="material-symbols-outlined" style="font-size: 32px;">support_agent</span>
+</button></body></html>

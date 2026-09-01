@@ -1,0 +1,320 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Worker Earnings Dashboard - SAHYOG</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#316e52",
+                      "tertiary-container": "#552b00",
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#1a365d",
+                      "secondary-fixed-dim": "#95d4b3",
+                      "on-surface": "#141b2b",
+                      "secondary": "#2c694e",
+                      "surface-container-high": "#e1e8fd",
+                      "on-surface-variant": "#43474e",
+                      "on-tertiary-fixed": "#2f1500",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#c4c6cf",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#e9edff",
+                      "on-secondary-fixed": "#002114",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#dce2f7",
+                      "inverse-surface": "#293040",
+                      "outline": "#74777f",
+                      "on-tertiary-fixed-variant": "#6e3900",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#b1f0ce",
+                      "primary": "#002045",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#d3daef",
+                      "surface": "#f9f9ff",
+                      "on-primary-container": "#86a0cd",
+                      "tertiary": "#361900",
+                      "surface-variant": "#dce2f7",
+                      "background": "#f9f9ff",
+                      "secondary-container": "#aeeecb",
+                      "inverse-on-surface": "#edf0ff",
+                      "on-secondary-fixed-variant": "#0e5138",
+                      "inverse-primary": "#adc7f7",
+                      "on-primary-fixed": "#001b3c",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "surface-container-low": "#f1f3ff",
+                      "primary-fixed": "#d6e3ff",
+                      "tertiary-fixed": "#ffdcc3",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "primary-fixed-dim": "#adc7f7",
+                      "surface-tint": "#455f88",
+                      "on-background": "#141b2b",
+                      "surface-bright": "#f9f9ff",
+                      "on-tertiary-container": "#eb851c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding-mobile": "16px",
+                      "gutter": "16px",
+                      "base": "8px",
+                      "container-padding-desktop": "32px",
+                      "touch-target-min": "48px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { background-color: #F9FAFB; }
+        .card-surface { background-color: #FFFFFF; border: 1px solid #E5E7EB; }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(229, 231, 235, 0.5); }
+    </style>
+</head>
+<body class="text-on-background min-h-screen pb-24 md:pb-0 font-body-md">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant flex justify-between items-center w-full px-container-padding-mobile md:px-container-padding-desktop h-touch-target-min fixed top-0 z-50">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz67lpDckmLGDsBxyqjiszBbHAwqR2ip4oJCAYoQn69_hXSyGy4jDBG654Gy-n84H-ek6k9Ps4IEJNGGjen_SNXeL0x38l1Kde5zYvRlXpX-wUpCnXF9luVGzzUAkABII5b_QTXXz6zDNOmR_jhNjwQICPNKjzuB4xb5fvDGwWOHgk-EVDADAQM30YUg4dSUFeaFTTQpYVVQF37sm_nFp-ySJxwjqJvefUOttjhERTVurS6gJX8uKs" alt="SAHYOG Brand Logo" class="h-8 w-auto object-contain">
+<div class="flex gap-4 items-center">
+<button class="text-on-surface-variant hover:bg-surface-container transition-colors p-2 rounded-full h-10 w-10 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container transition-colors p-2 rounded-full h-10 w-10 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</button>
+<img alt="User profile photo" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a worker, well-lit, friendly expression, modern Indian digital public infrastructure aesthetic, clean light background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHnuuVN5LktxlH2UNbiereNJvzIMJhgzZyQg_01NCUTHtile0OWKXLZgXUwwC4vTrwaXOv_wwK8mcETNIjNeNMuPefnhJhAApazImrgVYJTM6XPTqoEx32tne2B1CICw3X_6I_lpo-d3qwh4v0ng3jslWChwj7G2VgKNgTlvOXzdlZeI_7NJAF96hFRTq5tygJIziCIE0-2OyuJ4eO-G1TZMAaIFsHG3YRgrgxmUy6hsjbKblBkE9q">
+</div>
+</header>
+<!-- SideNavBar (Hidden on Mobile) -->
+<nav class="bg-primary text-on-primary hidden lg:flex flex-col h-screen fixed left-0 top-0 z-40 w-64 pt-20 shadow-lg">
+<div class="px-6 pb-6 border-b border-on-primary/10">
+<div class="text-headline-md font-headline-md font-extrabold text-on-primary mb-1">Admin Panel</div>
+<div class="text-label-sm font-label-sm text-on-primary/70">Federation Control</div>
+</div>
+<div class="flex-1 py-4 flex flex-col gap-1">
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="text-label-md font-label-md">Workers</span>
+</a>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="engineering">engineering</span>
+<span class="text-label-md font-label-md">Jobs</span>
+</a>
+<a class="bg-primary-container text-on-primary-container rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-md font-label-md font-bold">Analytics</span>
+</a>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</div>
+<div class="p-4">
+<button class="w-full bg-[#ba1a1a] text-white h-touch-target-min rounded-lg text-label-md font-label-md font-bold shadow-sm">SOS Monitor</button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="pt-20 px-container-padding-mobile md:px-container-padding-desktop lg:ml-64 max-w-7xl mx-auto space-y-6">
+<header class="py-6">
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-on-background">Earnings Overview</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-2">Track your financial progress for the current month.</p>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Total Earnings Card (Hero) -->
+<div class="md:col-span-2 glass-card rounded-xl p-6 relative overflow-hidden flex flex-col justify-between min-h-[240px]">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none"></div>
+<div class="relative z-10 flex justify-between items-start">
+<div>
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Total Earnings (Nov)</h2>
+<div class="text-display-lg font-display-lg text-primary mt-2 flex items-baseline gap-2">
+                            ₹11,520 <span class="text-body-md font-body-md text-secondary bg-secondary-fixed px-2 py-1 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">trending_up</span> +12%</span>
+</div>
+</div>
+<button class="bg-secondary text-on-secondary h-touch-target-min px-6 rounded-lg text-label-md font-label-md font-bold shadow-sm hover:opacity-90 transition-opacity">Withdraw</button>
+</div>
+<!-- Simple CSS Bar Chart Representation -->
+<div class="relative z-10 mt-8">
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-4">Weekly Trend</p>
+<div class="flex items-end h-32 gap-2 w-full max-w-md">
+<div class="flex-1 flex flex-col items-center justify-end group">
+<div class="w-full bg-secondary/30 rounded-t-sm h-[40%] group-hover:bg-secondary/50 transition-colors"></div>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-2">W1</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-end group">
+<div class="w-full bg-secondary/30 rounded-t-sm h-[60%] group-hover:bg-secondary/50 transition-colors"></div>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-2">W2</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-end group">
+<div class="w-full bg-secondary/30 rounded-t-sm h-[85%] group-hover:bg-secondary/50 transition-colors"></div>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-2">W3</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-end group">
+<div class="w-full bg-secondary rounded-t-sm h-[100%] transition-colors relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface text-on-surface text-label-sm px-2 py-1 rounded shadow-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-outline-variant">₹4,200</div>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-bold mt-2">W4</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Breakdown Column -->
+<div class="flex flex-col gap-6">
+<!-- Completed Jobs -->
+<div class="card-surface rounded-xl p-6 flex items-center justify-between">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Completed Jobs</p>
+<p class="text-headline-lg font-headline-lg text-on-background mt-1">24</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="task_alt">task_alt</span>
+</div>
+</div>
+<!-- Avg Earning -->
+<div class="card-surface rounded-xl p-6 flex items-center justify-between">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Avg Earning / Job</p>
+<p class="text-headline-lg font-headline-lg text-on-background mt-1">₹480</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+</div>
+<!-- Working Hours -->
+<div class="card-surface rounded-xl p-6 flex items-center justify-between">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Working Hours</p>
+<p class="text-headline-lg font-headline-lg text-on-background mt-1">110h</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Payments Table -->
+<div class="card-surface rounded-xl overflow-hidden mt-8 mb-8">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center">
+<h3 class="text-headline-md font-headline-md text-on-background">Recent Payments</h3>
+<button class="text-primary text-label-md font-label-md hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-outline-variant text-label-md font-label-md text-on-surface-variant">
+<th class="p-4 font-normal">Date</th>
+<th class="p-4 font-normal">Job Type</th>
+<th class="p-4 font-normal">Amount</th>
+<th class="p-4 font-normal">Status</th>
+</tr>
+</thead>
+<tbody class="text-body-md font-body-md text-on-background divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-4">24 Nov, 2023</td>
+<td class="p-4">Delivery Run - Sector 4</td>
+<td class="p-4 font-semibold">₹450</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1 bg-secondary/10 text-secondary px-3 py-1 rounded-full text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Paid
+                                </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-4">22 Nov, 2023</td>
+<td class="p-4">Warehouse Sorting</td>
+<td class="p-4 font-semibold">₹800</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1 bg-secondary/10 text-secondary px-3 py-1 rounded-full text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Paid
+                                </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-4">20 Nov, 2023</td>
+<td class="p-4">Retail Stocking</td>
+<td class="p-4 font-semibold">₹650</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1 bg-on-tertiary-container/10 text-on-tertiary-container px-3 py-1 rounded-full text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">pending</span> Pending
+                                </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-4">18 Nov, 2023</td>
+<td class="p-4">Delivery Run - City Center</td>
+<td class="p-4 font-semibold">₹520</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1 bg-secondary/10 text-secondary px-3 py-1 rounded-full text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Paid
+                                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Visible on Mobile) -->
+<nav class="bg-surface border-t border-outline-variant shadow-[0_-4px_12px_rgba(26,54,93,0.05)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="text-label-sm font-label-sm mt-1">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="text-label-sm font-label-sm mt-1">Earnings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="diversity_3">diversity_3</span>
+<span class="text-label-sm font-label-sm mt-1">Welfare</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm mt-1">Profile</span>
+</a>
+</nav>
+
+
+
+
+<button class="fixed bottom-24 right-4 md:bottom-8 md:right-8 z-50 w-14 h-14 bg-primary-container text-on-primary-container rounded-full shadow-lg flex items-center justify-center hover:opacity-90 transition-all active:scale-95" aria-label="Sahyog Assistant Chatbot"><span class="material-symbols-outlined text-[28px]">support_agent</span></button></body></html>

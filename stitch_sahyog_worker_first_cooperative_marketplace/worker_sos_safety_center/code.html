@@ -1,0 +1,171 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-width=1.0" name="viewport">
+<title>SOS Emergency - Sahyog Worker App</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#316e52",
+                      "tertiary-container": "#552b00",
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#1a365d",
+                      "secondary-fixed-dim": "#95d4b3",
+                      "on-surface": "#141b2b",
+                      "secondary": "#2c694e",
+                      "surface-container-high": "#e1e8fd",
+                      "on-surface-variant": "#43474e",
+                      "on-tertiary-fixed": "#2f1500",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#c4c6cf",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#e9edff",
+                      "on-secondary-fixed": "#002114",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#dce2f7",
+                      "inverse-surface": "#293040",
+                      "outline": "#74777f",
+                      "on-tertiary-fixed-variant": "#6e3900",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#b1f0ce",
+                      "primary": "#002045",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#d3daef",
+                      "surface": "#f9f9ff",
+                      "on-primary-container": "#86a0cd",
+                      "tertiary": "#361900",
+                      "surface-variant": "#dce2f7",
+                      "background": "#f9f9ff",
+                      "secondary-container": "#aeeecb",
+                      "inverse-on-surface": "#edf0ff",
+                      "on-secondary-fixed-variant": "#0e5138",
+                      "inverse-primary": "#adc7f7",
+                      "on-primary-fixed": "#001b3c",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "surface-container-low": "#f1f3ff",
+                      "primary-fixed": "#d6e3ff",
+                      "tertiary-fixed": "#ffdcc3",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "primary-fixed-dim": "#adc7f7",
+                      "surface-tint": "#455f88",
+                      "on-background": "#141b2b",
+                      "surface-bright": "#f9f9ff",
+                      "on-tertiary-container": "#eb851c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding-mobile": "16px",
+                      "gutter": "16px",
+                      "base": "8px",
+                      "container-padding-desktop": "32px",
+                      "touch-target-min": "48px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .pulse-animation {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-error-container min-h-screen font-body-md text-on-background m-0 p-0 antialiased selection:bg-error selection:text-on-error flex flex-col items-center justify-center">
+<!-- Main SOS Container -->
+<main class="w-full max-w-md mx-auto px-container-padding-mobile py-8 flex flex-col gap-6">
+<!-- Header / Status -->
+<div class="text-center"><div class="flex justify-center mb-4"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz67lpDckmLGDsBxyqjiszBbHAwqR2ip4oJCAYoQn69_hXSyGy4jDBG654Gy-n84H-ek6k9Ps4IEJNGGjen_SNXeL0x38l1Kde5zYvRlXpX-wUpCnXF9luVGzzUAkABII5b_QTXXz6zDNOmR_jhNjwQICPNKjzuB4xb5fvDGwWOHgk-EVDADAQM30YUg4dSUFeaFTTQpYVVQF37sm_nFp-ySJxwjqJvefUOttjhERTVurS6gJX8uKs" alt="SAHYOG Brand Logo" class="h-12 w-auto opacity-75"></div>
+<h1 class="text-display-lg font-display-lg text-error mb-2 uppercase tracking-widest">SOS</h1>
+<div class="inline-flex items-center gap-2 bg-error/10 text-error px-4 py-2 rounded-full">
+<span class="material-symbols-outlined animate-pulse" style="font-variation-settings: 'FILL' 1;">my_location</span>
+<span class="text-label-md font-label-md">Location Sharing Active</span>
+</div>
+</div>
+<!-- Big Red Button -->
+<div class="relative flex justify-center items-center py-8">
+<!-- Pulsing background rings -->
+<div class="absolute w-64 h-64 bg-error rounded-full pulse-animation opacity-50"></div>
+<div class="absolute w-56 h-56 bg-error rounded-full pulse-animation opacity-75" style="animation-delay: -0.5s;"></div>
+<button class="relative w-48 h-48 bg-error rounded-full flex flex-col items-center justify-center text-on-error shadow-lg transition-transform active:scale-95 border-4 border-on-error">
+<span class="material-symbols-outlined text-[64px] mb-2" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-headline-md font-headline-md font-bold uppercase tracking-wider">Help</span>
+</button>
+</div>
+<!-- Immediate Actions -->
+<div class="flex flex-col gap-4 mt-4">
+<button class="w-full h-touch-target-min bg-error text-on-error rounded-lg flex items-center justify-center gap-3 shadow-md hover:bg-on-error-container transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">call</span>
+                Call Emergency Services (112)
+            </button>
+<button class="w-full h-touch-target-min bg-surface text-error border border-error rounded-lg flex items-center justify-center gap-3 shadow-sm hover:bg-error-container transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+                Notify Cooperative Support
+            </button>
+<button class="w-full h-touch-target-min bg-surface text-on-surface border border-outline rounded-lg flex items-center justify-center gap-3 shadow-sm hover:bg-surface-container transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">share_location</span>
+                Share Live Location Link
+            </button>
+</div>
+<!-- Incident Description -->
+<div class="bg-surface p-4 rounded-xl border border-outline-variant mt-2 shadow-sm">
+<label class="block text-label-md font-label-md text-on-surface mb-2" for="incident-description">Describe Incident (Optional)</label>
+<div class="relative">
+<textarea class="w-full rounded-lg border-outline-variant bg-surface-container-lowest text-on-surface text-body-md font-body-md p-3 focus:ring-error focus:border-error resize-none" id="incident-description" placeholder="Quickly type details..." rows="2"></textarea>
+<button class="absolute bottom-3 right-3 text-primary hover:text-primary-container transition-colors" title="Voice Input">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+<button class="w-full mt-3 h-touch-target-min bg-primary text-on-primary rounded-lg flex items-center justify-center gap-2 hover:bg-primary-container transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined">send</span> Send Details
+            </button>
+</div>
+<!-- Cancel -->
+<button class="mt-4 text-on-surface-variant text-label-md font-label-md hover:text-on-surface transition-colors pb-8">
+            Cancel False Alarm
+        </button>
+</main>
+
+
+
+
+<button class="fixed bottom-6 right-6 w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg hover:bg-primary-container transition-colors z-50 active:scale-95" aria-label="Sahyog Assistant">
+  <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+</button></body></html>

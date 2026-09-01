@@ -1,0 +1,201 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SAHYOG - Login &amp; Registration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#316e52",
+                        "tertiary-container": "#552b00",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#1a365d",
+                        "secondary-fixed-dim": "#95d4b3",
+                        "on-surface": "#141b2b",
+                        "secondary": "#2c694e",
+                        "surface-container-high": "#e1e8fd",
+                        "on-surface-variant": "#43474e",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#e9edff",
+                        "on-secondary-fixed": "#002114",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#dce2f7",
+                        "inverse-surface": "#293040",
+                        "outline": "#74777f",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#b1f0ce",
+                        "primary": "#002045",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d3daef",
+                        "surface": "#f9f9ff",
+                        "on-primary-container": "#86a0cd",
+                        "tertiary": "#361900",
+                        "surface-variant": "#dce2f7",
+                        "background": "#f9f9ff",
+                        "secondary-container": "#aeeecb",
+                        "inverse-on-surface": "#edf0ff",
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "inverse-primary": "#adc7f7",
+                        "on-primary-fixed": "#001b3c",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "surface-container-low": "#f1f3ff",
+                        "primary-fixed": "#d6e3ff",
+                        "tertiary-fixed": "#ffdcc3",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "primary-fixed-dim": "#adc7f7",
+                        "surface-tint": "#455f88",
+                        "on-background": "#141b2b",
+                        "surface-bright": "#f9f9ff",
+                        "on-tertiary-container": "#eb851c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-mobile": "16px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "container-padding-desktop": "32px",
+                        "touch-target-min": "48px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="h-full bg-background font-body-md text-on-background flex flex-col antialiased">
+<!-- Top Navigation for Context, simplified for login -->
+<header class="flex justify-between items-center w-full px-container-padding-mobile md:px-container-padding-desktop h-touch-target-min bg-surface border-b border-outline-variant flat no shadows shrink-0">
+<div class="flex items-center gap-2">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz67lpDckmLGDsBxyqjiszBbHAwqR2ip4oJCAYoQn69_hXSyGy4jDBG654Gy-n84H-ek6k9Ps4IEJNGGjen_SNXeL0x38l1Kde5zYvRlXpX-wUpCnXF9luVGzzUAkABII5b_QTXXz6zDNOmR_jhNjwQICPNKjzuB4xb5fvDGwWOHgk-EVDADAQM30YUg4dSUFeaFTTQpYVVQF37sm_nFp-ySJxwjqJvefUOttjhERTVurS6gJX8uKs" alt="SAHYOG Brand Logo" class="h-8 w-auto object-contain">
+</div>
+<div class="flex items-center gap-4">
+<!-- Actions hidden on linear flow -->
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center p-4 sm:p-6 lg:p-8 w-full">
+<!-- Main Card -->
+<div class="w-full max-w-md bg-surface-container-lowest border border-outline-variant rounded-xl p-6 sm:p-8 shadow-sm">
+<div class="text-center mb-8">
+<h1 class="text-headline-lg font-headline-lg text-primary mb-2 hidden md:block">Welcome Back</h1>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-primary mb-2 md:hidden">Welcome Back</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Select your role to access your account.</p>
+</div>
+<!-- Role Selection -->
+<div class="mb-6 space-y-3">
+<label class="block text-label-md font-label-md text-on-surface mb-2">I am a...</label>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<button aria-pressed="true" class="relative h-touch-target-min flex items-center justify-center gap-2 rounded-lg border-2 border-primary bg-surface-container-low text-primary transition-all hover:bg-surface-container focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">work</span>
+<span class="font-label-md text-label-md">Worker</span>
+</button>
+<button aria-pressed="false" class="relative h-touch-target-min flex items-center justify-center gap-2 rounded-lg border border-outline-variant bg-surface text-on-surface-variant transition-all hover:bg-surface-container focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-md text-label-md">Customer</span>
+</button>
+<button aria-pressed="false" class="relative h-touch-target-min flex items-center justify-center gap-2 rounded-lg border border-outline-variant bg-surface text-on-surface-variant transition-all hover:bg-surface-container focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">admin_panel_settings</span>
+<span class="font-label-md text-label-md">Admin</span>
+</button>
+</div>
+</div>
+<!-- Login Form -->
+<form class="space-y-6">
+<!-- Tabs for Login Method -->
+<div class="flex border-b border-outline-variant mb-4">
+<button class="flex-1 pb-2 border-b-2 border-primary text-primary font-label-md text-label-md text-center transition-colors" type="button">
+                        Mobile / OTP
+                    </button>
+<button class="flex-1 pb-2 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label-md text-label-md text-center transition-colors" type="button">
+                        Email
+                    </button>
+</div>
+<!-- Mobile Input Section -->
+<div class="space-y-4">
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface mb-1" for="mobile">Mobile Number</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-on-surface-variant text-body-md font-body-md border-r border-outline-variant pr-2 my-1">+91</span>
+<input class="pl-14 block w-full h-touch-target-min rounded-lg border-outline-variant bg-surface text-on-surface shadow-sm focus:border-primary focus:ring-primary text-body-md font-body-md" id="mobile" name="mobile" placeholder="Enter your 10-digit number" type="tel">
+</div>
+</div>
+<button class="w-full h-touch-target-min bg-surface-container border border-outline-variant text-primary font-label-md text-label-md rounded-lg hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1" type="button">
+<span class="material-symbols-outlined text-[20px]">sms</span>
+                        Get OTP
+                    </button>
+<!-- OTP Input (Hidden by default, shown for visual context in this layout) -->
+<div class="mt-4 pt-4 border-t border-outline-variant/50">
+<label class="block text-label-sm font-label-sm text-on-surface mb-1" for="otp">Enter OTP</label>
+<input class="block w-full h-touch-target-min rounded-lg border-outline-variant bg-surface text-on-surface shadow-sm focus:border-primary focus:ring-primary text-center text-headline-md font-headline-md tracking-widest" id="otp" maxlength="6" name="otp" placeholder="• • • • • •" type="text">
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<input class="h-4 w-4 rounded border-outline-variant text-primary focus:ring-primary" id="remember-me" name="remember-me" type="checkbox">
+<label class="ml-2 block text-label-sm font-label-sm text-on-surface" for="remember-me">Remember me</label>
+</div>
+<div class="text-sm">
+<a class="font-label-sm text-label-sm text-primary hover:text-primary-fixed-variant hover:underline transition-colors" href="#">Forgot password?</a>
+</div>
+</div>
+<div>
+<button class="w-full flex justify-center items-center h-touch-target-min rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-on-primary-fixed-variant focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 transition-colors shadow-sm" type="submit">
+                        Login to Account
+                    </button>
+</div>
+</form>
+<div class="mt-6 text-center">
+<p class="text-body-md font-body-md text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="font-label-md text-label-md text-primary hover:underline" href="#">Register here</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Visual Accent Background for large screens (optional polish) -->
+<div class="fixed inset-0 z-[-1] hidden lg:block overflow-hidden pointer-events-none">
+<div class="absolute top-0 right-0 -mt-32 -mr-32 w-[600px] h-[600px] bg-primary-container/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 -mb-32 -ml-32 w-[600px] h-[600px] bg-secondary-container/10 rounded-full blur-3xl"></div>
+</div>
+
+
+
+
+<button class="fixed bottom-6 right-6 w-14 h-14 bg-primary-container text-on-primary rounded-full shadow-lg flex items-center justify-center hover:bg-on-primary-fixed-variant transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 z-50" aria-label="Sahyog Assistant Chatbot">
+  <span class="material-symbols-outlined text-[28px]">support_agent</span>
+</button></body></html>

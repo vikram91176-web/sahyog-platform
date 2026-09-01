@@ -1,0 +1,419 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SAHYOG - Worker Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#316e52",
+                      "tertiary-container": "#552b00",
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#1a365d",
+                      "secondary-fixed-dim": "#95d4b3",
+                      "on-surface": "#141b2b",
+                      "secondary": "#2c694e",
+                      "surface-container-high": "#e1e8fd",
+                      "on-surface-variant": "#43474e",
+                      "on-tertiary-fixed": "#2f1500",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#c4c6cf",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#e9edff",
+                      "on-secondary-fixed": "#002114",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#dce2f7",
+                      "inverse-surface": "#293040",
+                      "outline": "#74777f",
+                      "on-tertiary-fixed-variant": "#6e3900",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#b1f0ce",
+                      "primary": "#002045",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#d3daef",
+                      "surface": "#f9f9ff",
+                      "on-primary-container": "#86a0cd",
+                      "tertiary": "#361900",
+                      "surface-variant": "#dce2f7",
+                      "background": "#f9f9ff",
+                      "secondary-container": "#aeeecb",
+                      "inverse-on-surface": "#edf0ff",
+                      "on-secondary-fixed-variant": "#0e5138",
+                      "inverse-primary": "#adc7f7",
+                      "on-primary-fixed": "#001b3c",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "surface-container-low": "#f1f3ff",
+                      "primary-fixed": "#d6e3ff",
+                      "tertiary-fixed": "#ffdcc3",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "primary-fixed-dim": "#adc7f7",
+                      "surface-tint": "#455f88",
+                      "on-background": "#141b2b",
+                      "surface-bright": "#f9f9ff",
+                      "on-tertiary-container": "#eb851c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding-mobile": "16px",
+                      "gutter": "16px",
+                      "base": "8px",
+                      "container-padding-desktop": "32px",
+                      "touch-target-min": "48px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-24 md:pb-0 md:pl-64 flex flex-col antialiased">
+<!-- TopAppBar (Mobile) / Header Area -->
+<header class="bg-surface border-b border-outline-variant flex justify-between items-center w-full px-container-padding-mobile md:px-container-padding-desktop h-touch-target-min md:hidden sticky top-0 z-30">
+<div class="flex items-center h-8"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz67lpDckmLGDsBxyqjiszBbHAwqR2ip4oJCAYoQn69_hXSyGy4jDBG654Gy-n84H-ek6k9Ps4IEJNGGjen_SNXeL0x38l1Kde5zYvRlXpX-wUpCnXF9luVGzzUAkABII5b_QTXXz6zDNOmR_jhNjwQICPNKjzuB4xb5fvDGwWOHgk-EVDADAQM30YUg4dSUFeaFTTQpYVVQF37sm_nFp-ySJxwjqJvefUOttjhERTVurS6gJX8uKs" alt="SAHYOG Brand Logo" class="h-full w-auto object-contain"></div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="location_on" style="font-variation-settings: 'FILL' 0;">location_on</span>
+</button>
+<img alt="User profile photo" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small, circular avatar portrait of an Indian gig worker with a friendly expression. The lighting is bright and clear, set against a neutral light grey background, conveying professionalism and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbV99Ys1GnH2QXmDgCvqgGEpUAPBGpoHw051OLgG8X1AuIUAHILgWE2q9NF1EZj_5SCmUPt2fzA46Ij_Vl7xyyi4f6lBb9LqoPrPAU6uilUTqWw-8wEQW3JkUKWTTcq6mgGpQemZQ4gV2NRHhWdPhsNscgb3ZNSH1xtEH7IQnBCj9FuQYwJSBCWBe-IWy8o2M0cWToMavCUUK1qIHhnt9gS2_h_uOcWcTCdl4LLbdq4yXDz2xloI8R">
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-screen fixed left-0 top-0 z-40 bg-primary shadow-lg docked left h-full w-64 border-r border-outline-variant/20">
+<div class="p-6 border-b border-outline-variant/10">
+<div class="flex items-center gap-4 mb-2">
+<img alt="Admin Avatar" class="w-10 h-10 rounded-full border-2 border-on-primary/30" data-alt="A professional circular avatar of an administrative user, featuring an Indian individual in formal attire, brightly lit against a stark dark navy background to match the sidebar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQiYBDs1fLc9cWlULRJIVoVwzq9E9udTyl3k_3gF-WdZUYB6oprta2Z5e47U7jgzgQuTvNRogiFTBndxe4SMfniH03JYYx0-BV8H-i_ZxGBL017-KiwrAA9T12f0KbNT-t5UvvfeC7g3wkOZp49nVPQqF8hPzulD6R9DVMTXKLv2iWqXKgZnuyqRM_0ZifM3OFmzDGbpI4EaaPZlRUyTWJs4LFf-bHpAJ0vv5gywIx5GT_G5EtXeXk">
+<div>
+<h1 class="text-headline-sm font-headline-md font-extrabold text-on-primary">Admin Panel</h1>
+<p class="text-label-sm font-label-sm text-on-primary/70">Federation Control</p>
+</div>
+</div>
+</div>
+<div class="flex-1 py-4 flex flex-col gap-1 overflow-y-auto">
+<a class="bg-primary-container text-on-primary-container rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 text-label-md font-label-md transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 text-label-md font-label-md hover:bg-primary-container/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+                Workers
+            </a>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 text-label-md font-label-md hover:bg-primary-container/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="engineering">engineering</span>
+                Jobs
+            </a>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 text-label-md font-label-md hover:bg-primary-container/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Analytics
+            </a>
+<a class="text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 text-label-md font-label-md hover:bg-primary-container/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</div>
+<div class="p-4 border-t border-outline-variant/10">
+<button class="w-full bg-error text-on-error rounded-lg px-4 py-3 font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-error/90 transition-colors">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+                SOS Monitor
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto p-container-padding-mobile md:p-container-padding-desktop flex flex-col gap-6">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-on-surface">Good morning, Rahul</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Ready for your next task?</p>
+</div>
+<!-- Availability Toggle -->
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/50">
+<span class="text-label-md font-label-md text-on-surface-variant">Available for Jobs</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-outline-variant rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+<!-- Quick Summary Cards (Bento Grid) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Available Jobs -->
+<div class="bg-white border border-outline-variant rounded-xl p-4 flex flex-col justify-between min-h-[120px] shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -top-4 w-16 h-16 bg-primary-container/10 rounded-full blur-xl group-hover:bg-primary-container/20 transition-all"></div>
+<div class="flex items-center gap-2 text-on-surface-variant mb-2 relative z-10">
+<span class="material-symbols-outlined text-primary" data-icon="work" style="font-variation-settings: 'FILL' 1;">work</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Available Jobs</span>
+</div>
+<div class="text-headline-md font-headline-md text-on-surface relative z-10">12</div>
+</div>
+<!-- Today's Earnings -->
+<div class="bg-white border border-outline-variant rounded-xl p-4 flex flex-col justify-between min-h-[120px] shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -top-4 w-16 h-16 bg-secondary-container/20 rounded-full blur-xl group-hover:bg-secondary-container/40 transition-all"></div>
+<div class="flex items-center gap-2 text-on-surface-variant mb-2 relative z-10">
+<span class="material-symbols-outlined text-secondary" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Today's Earnings</span>
+</div>
+<div class="text-headline-md font-headline-md text-on-surface relative z-10">₹500</div>
+</div>
+<!-- Monthly Earnings -->
+<div class="bg-white border border-outline-variant rounded-xl p-4 flex flex-col justify-between min-h-[120px] shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -top-4 w-16 h-16 bg-tertiary-container/10 rounded-full blur-xl group-hover:bg-tertiary-container/20 transition-all"></div>
+<div class="flex items-center gap-2 text-on-surface-variant mb-2 relative z-10">
+<span class="material-symbols-outlined text-tertiary-container" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Monthly</span>
+</div>
+<div class="text-headline-md font-headline-md text-on-surface relative z-10">₹12,400</div>
+</div>
+<!-- Welfare Score -->
+<div class="bg-white border border-outline-variant rounded-xl p-4 flex flex-col justify-between min-h-[120px] shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -top-4 w-16 h-16 bg-primary/5 rounded-full blur-xl group-hover:bg-primary/10 transition-all"></div>
+<div class="flex items-center justify-between mb-2 relative z-10">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary" data-icon="health_and_safety" style="font-variation-settings: 'FILL' 1;">health_and_safety</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Welfare Score</span>
+</div>
+</div>
+<div class="flex items-end gap-2 relative z-10">
+<span class="text-headline-md font-headline-md text-on-surface">88</span>
+<span class="text-label-md font-label-md text-on-surface-variant pb-1">/100</span>
+</div>
+<!-- Mini Progress Bar -->
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 relative z-10">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+</div>
+<!-- Recommended Jobs Section -->
+<div class="mt-4">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-headline-md font-headline-md text-on-surface">Recommended Jobs</h2>
+<button class="text-primary text-label-md font-label-md hover:underline flex items-center">
+                    See All <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Job Card 1 -->
+<div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col gap-4 shadow-sm hover:shadow-[0_4px_12px_rgba(26,54,93,0.05)] transition-shadow">
+<!-- Header -->
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-headline-sm font-headline-md text-on-surface mb-1">Electrical Repair</h3>
+<p class="text-label-md font-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="business">business</span> TechPark Building A
+                            </p>
+</div>
+<div class="bg-primary-container text-on-primary-container px-2 py-1 rounded text-label-sm font-label-sm font-bold">
+                            ₹450 - ₹600
+                        </div>
+</div>
+<!-- Meta Info -->
+<div class="flex gap-4 border-y border-outline-variant/30 py-3 mt-2">
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-base" data-icon="distance">distance</span>
+                            2.5 km away
+                        </div>
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm font-label-sm border-l border-outline-variant/50 pl-4">
+<span class="material-symbols-outlined text-base" data-icon="schedule">schedule</span>
+                            ~3 Hours
+                        </div>
+</div>
+<!-- Badges & Action -->
+<div class="flex justify-between items-center mt-2">
+<div class="flex gap-2">
+<span class="bg-[#f3e8ff] text-[#6b21a8] px-2 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase flex items-center gap-1 border border-[#d8b4fe]">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified">verified</span>
+                                Fair Wage
+                            </span>
+<span class="bg-surface-container-low text-on-surface-variant px-2 py-1 rounded text-[10px] font-bold uppercase border border-outline-variant/30">
+                                Wiring
+                            </span>
+</div>
+<button class="bg-secondary text-on-secondary h-touch-target-min px-6 rounded-lg text-label-md font-label-md hover:bg-secondary/90 transition-colors shadow-sm">
+                            Accept Job
+                        </button>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="bg-white border border-outline-variant rounded-xl p-5 flex flex-col gap-4 shadow-sm hover:shadow-[0_4px_12px_rgba(26,54,93,0.05)] transition-shadow">
+<!-- Header -->
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-headline-sm font-headline-md text-on-surface mb-1">Plumbing Fix</h3>
+<p class="text-label-md font-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="home_work">home_work</span> Sunrise Apartments
+                            </p>
+</div>
+<div class="bg-primary-container text-on-primary-container px-2 py-1 rounded text-label-sm font-label-sm font-bold">
+                            ₹300 - ₹400
+                        </div>
+</div>
+<!-- Meta Info -->
+<div class="flex gap-4 border-y border-outline-variant/30 py-3 mt-2">
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-base" data-icon="distance">distance</span>
+                            1.2 km away
+                        </div>
+<div class="flex items-center gap-1 text-on-surface-variant text-label-sm font-label-sm border-l border-outline-variant/50 pl-4">
+<span class="material-symbols-outlined text-base" data-icon="schedule">schedule</span>
+                            ~1.5 Hours
+                        </div>
+</div>
+<!-- Badges & Action -->
+<div class="flex justify-between items-center mt-2">
+<div class="flex gap-2">
+<span class="bg-surface-container-low text-on-surface-variant px-2 py-1 rounded text-[10px] font-bold uppercase border border-outline-variant/30">
+                                Pipe Leak
+                            </span>
+</div>
+<button class="bg-secondary text-on-secondary h-touch-target-min px-6 rounded-lg text-label-md font-label-md hover:bg-secondary/90 transition-colors shadow-sm">
+                            Accept Job
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Persistent SOS Button (Floating) -->
+<button class="fixed bottom-44 right-4 md:bottom-28 md:right-8 w-14 h-14 bg-primary-container text-on-primary-container rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform z-40 group">
+    <span class="material-symbols-outlined text-3xl" data-icon="support_agent" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+    <span class="absolute right-full mr-4 bg-inverse-surface text-inverse-on-surface text-label-sm px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+        Sahyog Assistant
+    </span>
+</button><button class="fixed bottom-24 right-4 md:bottom-8 md:right-8 w-14 h-14 bg-error text-on-error rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform z-40 group">
+<span class="material-symbols-outlined text-3xl" data-icon="emergency" style="font-variation-settings: 'FILL' 1;">emergency</span>
+<!-- Tooltip -->
+<span class="absolute right-full mr-4 bg-inverse-surface text-inverse-on-surface text-label-sm px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            Emergency SOS
+        </span>
+</button>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface shadow-[0_-4px_12px_rgba(26,54,93,0.05)] docked full-width bottom-0 rounded-t-xl">
+<!-- Active Tab: Home -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-sm font-label-sm mt-1">Home</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="work" style="font-variation-settings: 'FILL' 0;">work</span>
+<span class="text-label-sm font-label-sm mt-1">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'FILL' 0;">payments</span>
+<span class="text-label-sm font-label-sm mt-1">Earnings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="diversity_3" style="font-variation-settings: 'FILL' 0;">diversity_3</span>
+<span class="text-label-sm font-label-sm mt-1">Welfare</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="text-label-sm font-label-sm mt-1">Profile</span>
+</a>
+</nav>
+
+
+
+
+</body></html>

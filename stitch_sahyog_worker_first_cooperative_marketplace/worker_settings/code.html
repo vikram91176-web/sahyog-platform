@@ -1,0 +1,278 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SAHYOG - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#43474e",
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "tertiary": "#361900",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "surface-bright": "#f9f9ff",
+                        "on-tertiary-container": "#eb851c",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-secondary-container": "#316e52",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-highest": "#dce2f7",
+                        "tertiary-container": "#552b00",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#dce2f7",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-primary-container": "#86a0cd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "inverse-surface": "#293040",
+                        "on-surface": "#141b2b",
+                        "surface-tint": "#455f88",
+                        "background": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#001b3c",
+                        "inverse-on-surface": "#edf0ff",
+                        "outline": "#74777f",
+                        "tertiary-fixed": "#ffdcc3",
+                        "secondary": "#2c694e",
+                        "primary-container": "#1a365d",
+                        "secondary-container": "#aeeecb",
+                        "on-secondary-fixed": "#002114",
+                        "surface-dim": "#d3daef",
+                        "inverse-primary": "#adc7f7",
+                        "surface-container-low": "#f1f3ff",
+                        "secondary-fixed": "#b1f0ce",
+                        "surface-container-high": "#e1e8fd",
+                        "secondary-fixed-dim": "#95d4b3",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#adc7f7",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "surface-container": "#e9edff",
+                        "primary": "#002045",
+                        "on-background": "#141b2b",
+                        "surface": "#f9f9ff",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-desktop": "32px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "container-padding-mobile": "16px",
+                        "touch-target-min": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #2c694e;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #2c694e;
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #e2e8f0;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            background-color: #cbd5e1;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-[72px]">
+<!-- Top App Bar -->
+<header class="bg-surface top-0 sticky w-full z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center px-container-padding-mobile h-touch-target-min w-full max-w-7xl mx-auto">
+<button aria-label="Go Back" class="h-touch-target-min w-touch-target-min flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">Settings</h1>
+<div class="w-touch-target-min"></div> <!-- Placeholder for balance -->
+</div>
+</header>
+<main class="flex-grow w-full max-w-3xl mx-auto p-container-padding-mobile space-y-gutter pb-24 md:pb-8">
+<!-- Profile Section -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-4 flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<img class="w-16 h-16 rounded-full object-cover border border-outline-variant" data-alt="A close up, high quality headshot portrait of a mature Indian male worker. He has a warm, confident smile and is wearing practical, clean work attire. The background is a soft, blurred light blue gradient. The lighting is bright and even, suggesting a modern, professional digital ID photo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzXkxoiaIsm3wL5oZgTaCxtxG5KDINeepcAs98sCE5YC_YqiEDUA0nHgJABPmqMClYlqgYvIFYEs5AJh9AKuUOTMggACpmvo9yBFT3JtOXhB0cThcZU3PJVD9WPFaj5Rm1fj65dlO2nlmwGxkjJtawvvyOW_0jyJHmZ7a_Ljbl4ebMzYHvuu53Tc9HIS5no7uX236X14VjmPyddtFkzvndFTMzOIylfY-AFpnAhJGtDOB9A1MJN1KP">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Rahul Kumar</h2>
+<p class="font-body-md text-on-surface-variant">Worker ID: SAH-9284</p>
+</div>
+</div>
+<button class="h-touch-target-min px-4 rounded-full border border-outline text-primary font-label-md hover:bg-surface-container-low transition-colors flex items-center gap-2 active:scale-95">
+<span class="material-symbols-outlined" data-icon="edit">edit</span> Edit Profile
+            </button>
+</section>
+<!-- Service Preferences -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<div class="px-4 py-3 bg-surface-container-low border-b border-outline-variant">
+<h3 class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Service Preferences</h3>
+</div>
+<ul class="divide-y divide-outline-variant">
+<li class="p-4 flex items-center justify-between">
+<div>
+<div class="font-body-md font-medium text-on-surface">Available for Jobs</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Currently accepting new gig requests</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle1" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer" for="toggle1"></label>
+</div>
+</li>
+<li class="p-4 flex items-center justify-between">
+<div>
+<div class="font-body-md font-medium text-on-surface">Auto-accept matches (Fair Wage only)</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Automatically accept jobs meeting Fair Wage criteria</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle2" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer" for="toggle2"></label>
+</div>
+</li>
+<li class="p-4 flex items-center justify-between">
+<div>
+<div class="font-body-md font-medium text-on-surface">Preferred work radius</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Within 15km</div>
+</div>
+<button class="text-primary font-label-md h-touch-target-min px-2 hover:bg-surface-container-low rounded-md">Change</button>
+</li>
+</ul>
+</section>
+<!-- Notification Settings -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<div class="px-4 py-3 bg-surface-container-low border-b border-outline-variant">
+<h3 class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Notification Settings</h3>
+</div>
+<ul class="divide-y divide-outline-variant">
+<li class="p-4 flex items-center justify-between">
+<span class="font-body-md font-medium text-on-surface">New Job Alerts</span>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle3" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer" for="toggle3"></label>
+</div>
+</li>
+<li class="p-4 flex items-center justify-between">
+<span class="font-body-md font-medium text-on-surface">Payment Receipts</span>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle4" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer" for="toggle4"></label>
+</div>
+</li>
+<li class="p-4 flex items-center justify-between">
+<span class="font-body-md font-medium text-on-surface">Safety Updates</span>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle5" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer" for="toggle5"></label>
+</div>
+</li>
+</ul>
+</section>
+<!-- Account & Security -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<div class="px-4 py-3 bg-surface-container-low border-b border-outline-variant">
+<h3 class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Account &amp; Security</h3>
+</div>
+<ul class="divide-y divide-outline-variant">
+<li class="">
+<button class="w-full p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors h-touch-target-min">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="phone_iphone">phone_iphone</span>
+<span class="font-body-md text-on-surface">Change Mobile Number</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+</li>
+<li class="">
+<button class="w-full p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors h-touch-target-min">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="contact_emergency">contact_emergency</span>
+<span class="font-body-md text-on-surface">Emergency Contacts</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+</li>
+<li class="">
+<button class="w-full p-4 flex items-center justify-between hover:bg-error-container text-error transition-colors h-touch-target-min">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md font-medium">Logout</span>
+</div>
+</button>
+</li>
+</ul>
+</section>
+<!-- Support -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<div class="px-4 py-3 bg-surface-container-low border-b border-outline-variant">
+<h3 class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Support</h3>
+</div>
+<ul class="divide-y divide-outline-variant">
+<li class="">
+<button class="w-full p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors h-touch-target-min">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="support_agent">support_agent</span>
+<span class="font-body-md text-on-surface">Sahyog Assistant</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+</li>
+<li class="">
+<button class="w-full p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors h-touch-target-min">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="help">help</span>
+<span class="font-body-md text-on-surface">Help Center</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+</li>
+</ul>
+</section>
+<!-- App Info -->
+<div class="flex flex-col items-center justify-center pt-8 pb-4 opacity-70">
+<img alt="SAHYOG Logo" class="h-12 w-12 mb-2 rounded-md object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V5UWFcGy1H4M0IspbldmFbcivY8WCSdKAAo3k6SvZnbq8Xn3H2NKv_jp9KuHAQV8BNKI46jcLZepV9q7apfM7yDj4LD83kX6jYh6dgNi8SG9Xj9Z9FAlYdWvgmrWMrwQTHkli2RTODi2EWH2kcjpiscdkjGflpuYQdlxETTlXuF-4vSuH9YxXzRvCKu3W0fs70qo8XHLTO2fbXl89IVL45425haqTeFwwVvH1wmmyJ2O5tRAhReGHsngU">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Version 2.4.1</p>
+<button class="mt-2 font-label-md text-label-md text-primary hover:underline h-touch-target-min px-4">Terms of Service &amp; Privacy</button>
+</div>
+</main>
+
+
+<button aria-label="Sahyog Assistant Chat" class="fixed bottom-6 right-6 w-16 h-16 bg-primary-container text-on-primary rounded-full shadow-lg flex items-center justify-center z-50 hover:bg-primary transition-colors active:scale-95 duration-100"><span class="material-symbols-outlined text-[32px]" data-icon="chat">chat</span></button></body></html>

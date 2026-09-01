@@ -1,0 +1,333 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SAHYOG - Fair Work. Fair Wages. Stronger Cooperatives.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#316e52",
+                        "tertiary-container": "#552b00",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#1a365d",
+                        "secondary-fixed-dim": "#95d4b3",
+                        "on-surface": "#141b2b",
+                        "secondary": "#2c694e",
+                        "surface-container-high": "#e1e8fd",
+                        "on-surface-variant": "#43474e",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#e9edff",
+                        "on-secondary-fixed": "#002114",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#dce2f7",
+                        "inverse-surface": "#293040",
+                        "outline": "#74777f",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#b1f0ce",
+                        "primary": "#002045",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d3daef",
+                        "surface": "#f9f9ff",
+                        "on-primary-container": "#86a0cd",
+                        "tertiary": "#361900",
+                        "surface-variant": "#dce2f7",
+                        "background": "#f9f9ff",
+                        "secondary-container": "#aeeecb",
+                        "inverse-on-surface": "#edf0ff",
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "inverse-primary": "#adc7f7",
+                        "on-primary-fixed": "#001b3c",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "surface-container-low": "#f1f3ff",
+                        "primary-fixed": "#d6e3ff",
+                        "tertiary-fixed": "#ffdcc3",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "primary-fixed-dim": "#adc7f7",
+                        "surface-tint": "#455f88",
+                        "on-background": "#141b2b",
+                        "surface-bright": "#f9f9ff",
+                        "on-tertiary-container": "#eb851c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-mobile": "16px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "container-padding-desktop": "32px",
+                        "touch-target-min": "48px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar Semantic Shell -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-container-padding-mobile md:px-container-padding-desktop h-touch-target-min sticky top-0 z-50">
+<div class="flex items-center h-8 md:h-10">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz67lpDckmLGDsBxyqjiszBbHAwqR2ip4oJCAYoQn69_hXSyGy4jDBG654Gy-n84H-ek6k9Ps4IEJNGGjen_SNXeL0x38l1Kde5zYvRlXpX-wUpCnXF9luVGzzUAkABII5b_QTXXz6zDNOmR_jhNjwQICPNKjzuB4xb5fvDGwWOHgk-EVDADAQM30YUg4dSUFeaFTTQpYVVQF37sm_nFp-ySJxwjqJvefUOttjhERTVurS6gJX8uKs" alt="SAHYOG Brand Logo" class="h-full w-auto object-contain">
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-4">
+<a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg flex items-center" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg flex items-center" href="#">Find Services</a>
+<a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg flex items-center" href="#">Join as Worker</a>
+</nav>
+<div class="flex items-center gap-4 text-primary dark:text-primary-fixed">
+<button aria-label="Notifications" class="h-touch-target-min w-10 flex items-center justify-center hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="Location" class="h-touch-target-min w-10 flex items-center justify-center hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</button>
+<img alt="User profile photo" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small, professional headshot of an Indian worker wearing a clean uniform, smiling confidently against a bright, well-lit background. The image should convey trust, skill, and dignity, fitting for a modern digital platform's user profile photo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9uv1-DeKxIcrOCjYeEApHHqdj1WJ2DbJqEmVQNPP9FUf3MdT4UpB7sgPrEdUDQEwTq3MWk9o629UFQxx-NhdOeHfS4xMfMreG3nfMNF0OD0VBti64-LQV_XqUK-Nvop7IWpLrUfYDbEOTBUfOezX51Gh7E2es2tf4vO-QxYWICU0H0U0rzA_TaGkkntyXD3mL31G9QxI5k_JDmA0x6N9vhOFbo5daIo6FWQriwpjvxfM3jiWTsAo9">
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col">
+<!-- Hero Section -->
+<section class="relative w-full overflow-hidden bg-primary px-container-padding-mobile md:px-container-padding-desktop py-16 md:py-32 flex flex-col items-center justify-center text-center">
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-fixed to-transparent"></div>
+<div class="relative z-10 max-w-4xl mx-auto space-y-8">
+<h1 class="text-headline-lg-mobile md:text-display-lg font-headline-lg-mobile md:font-display-lg text-on-primary">
+                    Fair Work. Fair Wages. <br class="hidden md:block">Stronger Cooperatives.
+                </h1>
+<p class="text-body-lg font-body-lg text-primary-fixed max-w-2xl mx-auto">
+                    A worker-first digital platform that connects skills, opportunities, transparent earnings and welfare. Built on the principles of digital public infrastructure.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+<button class="bg-secondary text-on-secondary h-touch-target-min px-8 rounded-lg font-label-md text-label-md shadow-md hover:bg-secondary/90 transition-colors flex items-center justify-center gap-2">
+                        Find Services
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="bg-transparent border border-outline-variant text-on-primary h-touch-target-min px-8 rounded-lg font-label-md text-label-md hover:bg-surface-container/10 transition-colors flex items-center justify-center">
+                        Join as Worker
+                    </button>
+</div>
+</div>
+</section>
+<!-- Categories / Bento Grid -->
+<section class="py-16 md:py-24 px-container-padding-mobile md:px-container-padding-desktop bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-12">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">Verified Professional Services</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Connecting you with skilled, fairly-compensated workers.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Category Card 1 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-full h-32 rounded-lg overflow-hidden mb-4"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvYby8Xj9FMRTKN5gTjPIHUmNdhPhDn1ZCR0zpCnCKz0Ap1dR_E0eCYw4iIqr9KAT9RUOwF5Tgi3lh4A77bq2j4myPwqultvLZTah5aA0BcKnX7ABVaaxyyYhfPDg5_AGQshXpk3OmU1d5wPsOQDaF-q2R44DebZd94grSBx1NoXdjqiKxMvexiIX5E6cfnifw0dVcr9fP6ZAajrX6cXnyT-Xa15LKOZBNXE3jqKmPXWcu5w2apn94" alt="Electrical Services" class="w-full h-full object-cover"></div>
+<h3 class="text-label-md font-label-md text-on-surface">Electrical</h3>
+</div>
+<!-- Category Card 2 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-full h-32 rounded-lg overflow-hidden mb-4"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbZi_e1-MuZnfRmyPmDrSN_xyK3hqHIkmkCwRfM1guPIpRP0rgVyh3gKURV3fTgLIDewDovOa3XPzcAENdNgH3WK0RwQyBLegdzQQnOF4pOpgqeEOZXvFnNjeKo-p0YBYEsIHAw8RC5kOznDzZa9MjVQwt4uXNGNtlkyzO7HE_AaIPH1R5ArpabgemwMSnzPgJum52TaYD6AIOgylMRfyhfB9SUSO4a0z7DA_TatjeV0s_j6fvPOZ0" alt="Plumbing Services" class="w-full h-full object-cover"></div>
+<h3 class="text-label-md font-label-md text-on-surface">Plumbing</h3>
+</div>
+<!-- Category Card 3 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-full h-32 rounded-lg overflow-hidden mb-4"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Hl3GrejjbMvZmZhibXTj-9HZYe53_XOu3JxHU-xD3GxzXnW8SS8mmUbFWF8UBkjWUJnBd9-5vIj0s7erc-9emC4NcyrozZihrFPTLX90z6BgLnIvEx3LWFGrTRnsR_PWCFa-BZ0UQi0guSqATTmUwkTG7oAsv47ab23OB8hIPBxZuOiaRMWVwkdTgK6JQ1lINWdoswgPcogexQ1ECy7OjbCAuIVFZeHTt-MQcEKq_bVjl0V3bA7f" alt="Carpentry Services" class="w-full h-full object-cover"></div>
+<h3 class="text-label-md font-label-md text-on-surface">Carpentry</h3>
+</div>
+<!-- Category Card 4 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-full h-32 rounded-lg overflow-hidden mb-4"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjgbw5FWyTm4hIFaKG26iKNDlIaojGLNIvnBKK-3TY07JueiyHXwzf0x7NoSbxI7TcntVmjIiM3-QqFWv5kTR2R8wS36eIxQBgKvKFhSsC2UmmyfXxFNTB-Qn5MvkCPwQBO_vrMBSPM75Jh-JfK1JMT2yd9eXK3qXp5z3gF28EXhJYByk7XpbtuR1hSBysL_XrW3C48pGd77WKgpHjZkKxB4cHtYZlgQa-V-ZH9hHx4W9tOogO5Jen" alt="Cleaning Services" class="w-full h-full object-cover"></div>
+<h3 class="text-label-md font-label-md text-on-surface">Cleaning</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Flow -->
+<section class="py-16 md:py-24 px-container-padding-mobile md:px-container-padding-desktop bg-surface">
+<div class="max-w-5xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">How Sahyog Works</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">A transparent ecosystem ensuring fair value for everyone.</p>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-8 relative">
+<!-- Flow Line (Desktop) -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -z-10 -translate-y-1/2"></div>
+<!-- Flow Step 1 -->
+<div class="flex flex-col items-center text-center bg-surface p-4 rounded-xl">
+<div class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center mb-4 border-4 border-surface shadow-sm z-10">
+                            1
+                        </div>
+<h4 class="text-label-md font-label-md text-on-surface mb-2">Request</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant max-w-[120px]">Customer Request</p>
+</div>
+<!-- Arrow Mobile -->
+<span class="material-symbols-outlined text-outline-variant md:hidden">arrow_downward</span>
+<!-- Flow Step 2 -->
+<div class="flex flex-col items-center text-center bg-surface p-4 rounded-xl">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center mb-4 border-4 border-surface shadow-sm z-10">
+                            2
+                        </div>
+<h4 class="text-label-md font-label-md text-on-surface mb-2">Match</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant max-w-[120px]">Intelligent Job Pool</p>
+</div>
+<!-- Arrow Mobile -->
+<span class="material-symbols-outlined text-outline-variant md:hidden">arrow_downward</span>
+<!-- Flow Step 3 -->
+<div class="flex flex-col items-center text-center bg-surface p-4 rounded-xl">
+<div class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center mb-4 border-4 border-surface shadow-sm z-10">
+                            3
+                        </div>
+<h4 class="text-label-md font-label-md text-on-surface mb-2">Allocate</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant max-w-[120px]">Fair Allocation &amp; Wage</p>
+</div>
+<!-- Arrow Mobile -->
+<span class="material-symbols-outlined text-outline-variant md:hidden">arrow_downward</span>
+<!-- Flow Step 4 -->
+<div class="flex flex-col items-center text-center bg-surface p-4 rounded-xl">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center mb-4 border-4 border-surface shadow-sm z-10">
+                            4
+                        </div>
+<h4 class="text-label-md font-label-md text-on-surface mb-2">Complete</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant max-w-[120px]">Service &amp; Earnings</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Sahyog Features -->
+<section class="py-16 md:py-24 px-container-padding-mobile md:px-container-padding-desktop bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="flex flex-col justify-center space-y-6 md:pr-12">
+<h2 class="text-headline-md font-headline-md text-primary">Why Choose Sahyog?</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">We prioritize dignity, transparency, and safety for the gig workforce while delivering quality to customers.</p>
+<div class="space-y-4 pt-4">
+<div class="flex items-start gap-4">
+<div class="mt-1 w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">balance</span>
+</div>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface">Fair Wage Intelligence</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Algorithmic pricing ensuring workers receive fair compensation for their skills.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="mt-1 w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">verified</span>
+</div>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface">Verified Skills</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">All workers are vetted and trained, providing a reliable trust score.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="mt-1 w-8 h-8 rounded-full bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">local_hospital</span>
+</div>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface">Safety &amp; Support</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Built-in SOS emergency features and continuous welfare monitoring.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Graphic / Image Placeholder -->
+<div class="rounded-2xl bg-surface-container overflow-hidden min-h-[300px] border border-outline-variant shadow-sm flex items-center justify-center relative">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full opacity-80 mix-blend-multiply" data-alt="A modern, abstract digital illustration showing interconnected nodes representing a cooperative network. The color palette uses deep royal blue and success green, conveying trust, safety, and digital infrastructure. The aesthetic is clean, professional, and corporate modern, suitable for a SaaS landing page." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVdPsgZeKVnnQwemiIizGDQXUIhM2a7mgM47nWy-SJZ8oUpt7u7pG5NrZn8mC79i43kVw-Wbn2Hk7LCyyMSdaNqtiQGduUCnGnKIgrmq1PnHJkmLOVQRzO8tYtnebh-oYAvwBedTq2OybMnAZ2ti8AIu82peAbF6zm4r7iNRJ-f4qWbofS90qhM-sUQMdbBeFQ0QNUMsCWojlENtHGd3u3FdJggBAq23DAUQRZbWAm0PuEgw5MGBpK')"></div>
+<!-- Fallback abstract visual if image fails -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10"></div>
+</div>
+</div>
+</section>
+<!-- Impact Metrics -->
+<section class="py-16 bg-primary text-on-primary px-container-padding-mobile md:px-container-padding-desktop">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-on-primary/20">
+<div class="py-4 md:py-0">
+<div class="text-display-lg font-display-lg font-bold mb-2">10k+</div>
+<div class="text-label-md font-label-md text-primary-fixed">Workers Onboarded</div>
+</div>
+<div class="py-4 md:py-0">
+<div class="text-display-lg font-display-lg font-bold mb-2">50k+</div>
+<div class="text-label-md font-label-md text-primary-fixed">Jobs Completed</div>
+</div>
+<div class="py-4 md:py-0">
+<div class="text-display-lg font-display-lg font-bold mb-2">₹2Cr+</div>
+<div class="text-label-md font-label-md text-primary-fixed">Earnings Distributed</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Semantic Shell (Mobile Only) -->
+<nav class="md:hidden bg-surface dark:bg-surface-dim shadow-[0_-4px_12px_rgba(26,54,93,0.05)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 rounded-t-xl">
+<!-- Active Tab -->
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-container text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined fill-icon text-xl" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm mt-1">Home</span>
+</div>
+<!-- Inactive Tabs -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed cursor-pointer px-4 py-1">
+<span class="material-symbols-outlined text-xl" data-icon="work">work</span>
+<span class="text-label-sm font-label-sm mt-1">Jobs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed cursor-pointer px-4 py-1">
+<span class="material-symbols-outlined text-xl" data-icon="payments">payments</span>
+<span class="text-label-sm font-label-sm mt-1">Earnings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed cursor-pointer px-4 py-1">
+<span class="material-symbols-outlined text-xl" data-icon="diversity_3">diversity_3</span>
+<span class="text-label-sm font-label-sm mt-1">Welfare</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed cursor-pointer px-4 py-1">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm mt-1">Profile</span>
+</div>
+</nav>
+<!-- Spacer for mobile bottom nav -->
+<div class="h-20 md:hidden w-full bg-background"></div>
+
+
+
+
+<button aria-label="Sahyog Assistant" class="fixed bottom-24 right-6 md:bottom-8 md:right-8 w-14 h-14 bg-primary-container text-on-primary-container rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform cursor-pointer border border-outline-variant">
+    <span class="material-symbols-outlined text-2xl">support_agent</span>
+</button></body></html>
